@@ -1,0 +1,32 @@
+/* ***** color scheme *****
+Mint Green: #AEF78E
+Blue Sapphire: #086788
+Alice Blue: #E5ECF4
+Lavender Blue: #C3BEF7
+Sonic Silver: #706F6F
+*/
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  background-color: black;
+  color: white;
+}
+
+.content {
+  background-color: white;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+}
