@@ -8,7 +8,7 @@ The goal of this project is to create a calculator that runs in a users web brow
 - CSS
 - Javascript
 
-## Challenges and Potential new features.
+## Challenges and Potential new features
 
 ### To-Do List
 - [ ] Create math functions

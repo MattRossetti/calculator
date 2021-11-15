@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="styles.css" rel="styles">
   </head>
@@ -14,7 +17,40 @@
       <h1>This is da nice header</h1>
     </div>
     <div class="content">
-      <p>this is da nice content</p>
+      <div class="calc-container">
+        <div class="row-container">
+          <div class="display"></div>
+        </div>
+        <div class="row-container">
+          <button>AC</button>
+          <button>&divide;</button>
+          <button>&times;</button>
+          <button>&larr;</button>
+        </div>
+        <div class="row-container">
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button class="equals-button">&equals;</button>
+        </div>
+        <div class="row-container">
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>&minus;</button>
+        </div>
+        <div class="row-container">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <div class="plus-spacer"></div>
+        </div>
+        <div class="row-container bottom-row">
+          <button class=zero-button>0</button>
+          <button>.</button>
+          <button class="plus-button">+</button>
+        </div>
+      </div>
     </div>
     <div class="footer">
       <h3>this is da nice footer</h3>
