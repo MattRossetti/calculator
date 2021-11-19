@@ -42,14 +42,30 @@ let clear = () => {
 }
 
 let handleEquals = () => {
-  const x = parseInt(calcArray[1]);
-  const y = parseInt(calcArray[0]);
+  const x = parseFloat(calcArray[1]);
+  const y = parseFloat(calcArray[0]);
   const operatorCharCode = calcArray[2].charCodeAt(0);
-  const result = operate(x, y, operatorCharCode);
-  calcArray[0] = result;
+  calcArray[3] = operate(x, y, operatorCharCode);
+}
+
+let resetCalcArray = () => {
+  calcArray[0] = String(calcArray[3]);
   calcArray[1] = '';
-  calcArray[2] = ''
-  
+  calcArray[2] = '';
+  calcArray[3] = '';
+}
+
+let updateDisplay = (e) => {
+  if (e.id === 'equals-button') {
+    if (calcArray[0] === '' || calcArray[1] === '') return;
+    subText.innerHTML = `${calcArray[0]} ${calcArray[2]} ${calcArray[1]} = ${calcArray[3]}`;
+    mainText.innerHTML = calcArray[3];
+    resetCalcArray();
+  }
+  else {
+    mainText.innerHTML = calcArray[0];
+    subText.innerHTML = `${calcArray[1]} ${calcArray[2]}`;
+  }
 }
 
 let handleClick = (e) => {
@@ -66,6 +82,7 @@ let handleClick = (e) => {
     else calcArray[0] += e.textContent;
   }
   else if (e.id === 'backspace-button') {
+    // if (calcArray[0] = '') return;
     calcArray[0] = calcArray[0].substring(0, calcArray[0].length - 1)
   }
   else if (e.classList.contains('operator-button')){
@@ -76,7 +93,9 @@ let handleClick = (e) => {
   else if (e.id === 'equals-button') {
     handleEquals();
   }
+  updateDisplay(e);
   console.log(calcArray)
+
 }
 
 
@@ -91,7 +110,8 @@ let sleep = (ms) => {
 const allButtons = document.querySelectorAll('button')
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
-// const decimalButton = document.querySelector('#decimal-button');
+const mainText = document.querySelector('.main-text')
+const subText = document.querySelector('.sub-text')
 const calcArray = ['', '', ''];
 
 for (const button of allButtons) {

@@ -22,7 +22,9 @@ The goal of this project is to create a calculator that runs in a users web brow
     - [x] Content
     - [x] Footer
 - [x] Create calculator interface
-- [ ] Make calculator GUI buttons work as inputs
-- [ ] Implement keyboard control for number inputs
+- [x] Make calculator GUI buttons work as inputs
+- [x] Make calculator operations work
+- [x] Make display show numbers and operations
+- [x] Implement keyboard control for number inputs
 
 
