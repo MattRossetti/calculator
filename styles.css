@@ -7,6 +7,7 @@ MalaChite: #53DD6C
 Alice Blue: #E5ECF4
 Atomic Tangering: #F7996E
 Sonic Silver: #706F6F
+Dark Salmon: #E49273
 */
 
 /* ****** Calculator Dimensions ****
@@ -67,7 +68,7 @@ body {
   border-radius:18px;
   width: 342px;
   height: 80px;
-  background-color: #797596;
+  background-color: #CEE5F2;
   margin: 5px;
 }
 
@@ -88,27 +89,39 @@ button {
   border-radius: 18px;
   background-color: #E5ECF4;
   padding:0px;
+  transition: all .1s ease-in-out;
+  cursor: pointer;
 }
 
-/* .bottom-row {
-  display=
-} */
+button:hover {
+  transform: scale(1.05);
+}
 
-.zero-button {
+.clicked {
+  background-color:#53DD6C
+}
+
+#zero {
   width: 170px;
 }
 
-.plus-button {
+#add {
   height: 170px;
   margin-top: -85px;
   /* margin-bottom */
 }
 
-.plus-spacer {
+#plus-spacer {
   width:80px;
   margin: 5px;
 }
 
-.equals-button {
-  background-color: #53DD6C;
+.shaded {
+  background-color: #ACCBE1;
+  transition: all .1s ease-in-out;
+}
+
+a {
+  text-decoration: None;
+  color: #706F6F
 }

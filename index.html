@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="header">
-      <h1>This is da nice header</h1>
+      <h1>Web Calculator</h1>
     </div>
     <div class="content">
       <div class="calc-container">
@@ -22,38 +22,38 @@
           <div class="display"></div>
         </div>
         <div class="row-container">
-          <button>AC</button>
-          <button>&divide;</button>
-          <button>&times;</button>
-          <button>&larr;</button>
+          <button id="clear-button" class="shaded">AC</button>
+          <button class="operator-button shaded">&divide;</button>
+          <button class="operator-button shaded">&times;</button>
+          <button id="backspace-button" class="shaded">&larr;</button>
         </div>
         <div class="row-container">
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button class="equals-button">&equals;</button>
+          <button class="number-button">7</button>
+          <button class="number-button">8</button>
+          <button class="number-button">9</button>
+          <button id = "equals-button" class="shaded">&equals;</button>
         </div>
         <div class="row-container">
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>&minus;</button>
+          <button class="number-button">4</button>
+          <button class="number-button">5</button>
+          <button class="number-button">6</button>
+          <button class="operator-button shaded">&minus;</button>
         </div>
         <div class="row-container">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <div class="plus-spacer"></div>
+          <button class="number-button">1</button>
+          <button class="number-button">2</button>
+          <button class="number-button">3</button>
+          <div id="plus-spacer"></div>
         </div>
         <div class="row-container bottom-row">
-          <button class=zero-button>0</button>
-          <button>.</button>
-          <button class="plus-button">+</button>
+          <button id="zero" class="number-button">0</button>
+          <button id="decimal-button">.</button>
+          <button id="add" class="operator-button shaded">+</button>
         </div>
       </div>
     </div>
     <div class="footer">
-      <h3>this is da nice footer</h3>
+      <h3>Made with 🌮 by <a href="https://github.com/MattRossetti">Matt Rossetti</a></h3>
     </div>
   </body>
 </html>

@@ -17,11 +17,11 @@ The goal of this project is to create a calculator that runs in a users web brow
     - [x] Multiply
     - [x] Divide
     - [ ] Exponent
-- [ ] Create page layout
-    - [ ] Header
-    - [ ] Content
-    - [ ] Footer
-- [ ] Create calculator interface
+- [x] Create page layout
+    - [x] Header
+    - [x] Content
+    - [x] Footer
+- [x] Create calculator interface
 - [ ] Make calculator GUI buttons work as inputs
 - [ ] Implement keyboard control for number inputs
 
