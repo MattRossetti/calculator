@@ -21,10 +21,6 @@ let operate = (x, y, operatorCharCode) => {
   }
 }
 
-let onClick = (e) => {
-  console.log(this)
-}
-
 let clickEffect = (e) => {
   e.classList.add('clicked');
   e.classList.remove('shaded');
@@ -39,6 +35,7 @@ let clear = () => {
   calcArray[0] = '';
   calcArray[1] = '';
   calcArray[2] = '';
+  calcArray[2] = '';
 }
 
 let handleEquals = () => {
@@ -48,24 +45,61 @@ let handleEquals = () => {
   calcArray[3] = operate(x, y, operatorCharCode);
 }
 
-let resetCalcArray = () => {
-  calcArray[0] = String(calcArray[3]);
-  calcArray[1] = '';
-  calcArray[2] = '';
-  calcArray[3] = '';
+// let resetCalcArray = (e) => {
+//   calcArray[0] = String(calcArray[3]);
+//   calcArray[1] = '';
+//   if (e.id === 'equals-button') calcArray[2] = '';
+//   else calcArray[2] = e.textContent
+//   calcArray[3] = '';
+// }
+
+let resetCalcArray = (e) => {
+  if (e.id === 'equals-button') {
+    calcArray[0] = String(calcArray[3]);
+    calcArray[1] = '';
+    calcArray[2] = '';
+    calcArray[3] = '';
+  }
+  else {
+    calcArray[0] = '';
+    calcArray[1] = String(calcArray[3]);
+    calcArray[2] = e.textContent;
+    calcArray[3] = '';
+  }
+}
+
+let calculateOnOperator = (e) => {
+  if (!e.classList.contains('operator-button')) return false;;
+  if (calcArray[0] != '' && calcArray[1] != '') return true;
+  return false;
 }
 
 let updateDisplay = (e) => {
-  if (e.id === 'equals-button') {
+  if (e.id === 'equals-button') {    
     if (calcArray[0] === '' || calcArray[1] === '') return;
-    subText.innerHTML = `${calcArray[0]} ${calcArray[2]} ${calcArray[1]} = ${calcArray[3]}`;
+    subText.innerHTML = `${calcArray[1]} ${calcArray[2]} ${calcArray[0]} = ${calcArray[3]}`;
     mainText.innerHTML = calcArray[3];
-    resetCalcArray();
+    resetCalcArray(e);
+  }
+  else if (calculateOnOperator(e)) {
+    resetCalcArray(e);
+    subText.innerHTML = `${calcArray[1]} ${calcArray[2]}`
+    mainText.innerHTML = ''
   }
   else {
     mainText.innerHTML = calcArray[0];
     subText.innerHTML = `${calcArray[1]} ${calcArray[2]}`;
   }
+}
+
+let calculateDecision = (e) => {
+  if (e.id === 'equals-button') return true;
+  else if (e.classList.contains('operator-button')){
+    if (calcArray[0] != '' && calcArray[1] != '') {
+      return true;
+    };
+  }
+  return false;
 }
 
 let handleClick = (e) => {
@@ -82,27 +116,33 @@ let handleClick = (e) => {
     else calcArray[0] += e.textContent;
   }
   else if (e.id === 'backspace-button') {
-    // if (calcArray[0] = '') return;
     calcArray[0] = calcArray[0].substring(0, calcArray[0].length - 1)
   }
   else if (e.classList.contains('operator-button')){
-    calcArray[1] = calcArray[0];
-    calcArray[0] = '';
+    if (calcArray[0] != '' && calcArray[1] != '') {
+      'pass'
+    }
+    else if (calcArray[0] != '') {
+      calcArray[1] = calcArray[0];
+      calcArray[0] = '';
+    };
     calcArray[2] = e.textContent;
   }
-  else if (e.id === 'equals-button') {
+
+  if (calculateDecision(e)) {
     handleEquals();
   }
   updateDisplay(e);
   console.log(calcArray)
-
 }
-
-
 
 let sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
+
+// let findButton = (input) => {
+//   [...allButtons].find(e => e.textContent === input)
+// }
 
 
 /***** Script *****/
@@ -110,15 +150,47 @@ let sleep = (ms) => {
 const allButtons = document.querySelectorAll('button')
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
-const mainText = document.querySelector('.main-text')
-const subText = document.querySelector('.sub-text')
-const calcArray = ['', '', ''];
+const addButton = document.querySelector('#add-button');
+const subtractButton = document.querySelector('#subtract-button');
+const multiplyButton = document.querySelector('#multiply-button');
+const divideButton = document.querySelector('#divide-button');
+const equalsButton = document.querySelector('#equals-button')
+const mainText = document.querySelector('.main-text');
+const subText = document.querySelector('.sub-text');
+const calcArray = ['', '', '', ''];
 
 for (const button of allButtons) {
   button.addEventListener('click', (e) => {
     handleClick(button);
   })
 }
+
+window.addEventListener('keydown', (e) => {
+  e.preventDefault();
+  const input = e.key
+  if (input === '+') {
+    addButton.click();
+  }
+  if (input === '-') {
+    subtractButton.click();
+  }
+  if (input === '/') {
+    divideButton.click();
+  }
+  if (input === '*') {
+    multiplyButton.click(); 
+  }
+  console.log('yes')
+  if (input ==='Enter') {
+    equalsButton.click();
+  }
+  try{
+    const button = [...allButtons].find(e => e.textContent === input)
+    button.click();
+  } catch (e){
+    'pass'
+  }
+})
 
 
 

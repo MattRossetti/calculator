@@ -8,10 +8,11 @@ The goal of this project is to create a calculator that runs in a users web brow
 - CSS
 - Javascript
 
-## Challenges and Potential new features
+## Lessons learned
+This project solidified my ability to create simple layouts with html and CSS. Additionally this grew my javascript by creating a script to store and process the calculator data as well as allow keyboard inputs for the web page.
 
 ### To-Do List
-- [ ] Create math functions
+- [x] Create math functions
     - [x] Add
     - [x] Subtract
     - [x] Multiply
