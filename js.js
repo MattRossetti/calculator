@@ -9,15 +9,21 @@ let multiply = (x, y) => x * y;
 let divide = (x, y) => x / y;
 
 let operate = (x, y, operatorCharCode) => {
-  switch (operatorCharCode) {
-    case 43:
-      return add(x, y);
-    case 8722:
-      return subtract(x, y);
-    case 215:
-      return multiply(x, y);
-    case 247:
-      return divide(x, y);
+  if (operatorCharCode === 247 && y === 0) {
+    clear();
+    alert('nice try, but that wont work!');
+  }
+  else {
+    switch (operatorCharCode) {
+      case 43:
+        return add(x, y);
+      case 8722:
+        return subtract(x, y);
+      case 215:
+        return multiply(x, y);
+      case 247:
+        return divide(x, y);
+    }
   }
 }
 
@@ -35,7 +41,7 @@ let clear = () => {
   calcArray[0] = '';
   calcArray[1] = '';
   calcArray[2] = '';
-  calcArray[2] = '';
+  calcArray[3] = '';
 }
 
 let handleEquals = () => {
@@ -74,8 +80,16 @@ let calculateOnOperator = (e) => {
   return false;
 }
 
+let calcArrayEmpty = () => {
+  if (calcArray[0] != '') return false;
+  if (calcArray[1] != '') return false;
+  if (calcArray[2] != '') return false;
+  if (calcArray[3] != '') return false;
+  return true;
+}
+
 let updateDisplay = (e) => {
-  if (e.id === 'equals-button') {    
+  if (e.id === 'equals-button' && !calcArrayEmpty()) {    
     if (calcArray[0] === '' || calcArray[1] === '') return;
     subText.innerHTML = `${calcArray[1]} ${calcArray[2]} ${calcArray[0]} = ${calcArray[3]}`;
     mainText.innerHTML = calcArray[3];
@@ -85,6 +99,10 @@ let updateDisplay = (e) => {
     resetCalcArray(e);
     subText.innerHTML = `${calcArray[1]} ${calcArray[2]}`
     mainText.innerHTML = ''
+  }
+  else if (calcArrayEmpty()) {
+    mainText.innerHTML = '';
+    subText.innerHTML = '';
   }
   else {
     mainText.innerHTML = calcArray[0];
@@ -180,7 +198,6 @@ window.addEventListener('keydown', (e) => {
   if (input === '*') {
     multiplyButton.click(); 
   }
-  console.log('yes')
   if (input ==='Enter') {
     equalsButton.click();
   }
