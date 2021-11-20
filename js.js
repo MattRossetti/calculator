@@ -51,14 +51,6 @@ let handleEquals = () => {
   calcArray[3] = operate(x, y, operatorCharCode);
 }
 
-// let resetCalcArray = (e) => {
-//   calcArray[0] = String(calcArray[3]);
-//   calcArray[1] = '';
-//   if (e.id === 'equals-button') calcArray[2] = '';
-//   else calcArray[2] = e.textContent
-//   calcArray[3] = '';
-// }
-
 let resetCalcArray = (e) => {
   if (e.id === 'equals-button') {
     calcArray[0] = String(calcArray[3]);
@@ -84,7 +76,6 @@ let calcArrayEmpty = () => {
   if (calcArray[0] != '') return false;
   if (calcArray[1] != '') return false;
   if (calcArray[2] != '') return false;
-  if (calcArray[3] != '') return false;
   return true;
 }
 
